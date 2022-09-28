@@ -1,0 +1,8 @@
+# use Python 3.8
+qiskit
+cuquantum
+cuquantum-python
+cupy-cuda112
+matplotlib
+qulacs
+numpy
