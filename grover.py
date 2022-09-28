@@ -33,9 +33,11 @@ def make_Hadamard(nqubits):
     :param nqubits:
     :return:
     """
+    # linear operator is declared with a space that the operator is applied to
+    # nqubits-dim Hilbert space
     Hadamard = QuantumCircuit(nqubits)
     for i in range(nqubits):
-        # tensor product for operators
+        # tensor product for operators applied to i-th vector
         Hadamard.add_gate(H(i))
     return Hadamard
 
@@ -50,10 +52,10 @@ def make_U_w(nqubits):
     """
     U_w = QuantumCircuit(nqubits)
     # Z gate (z-axis Pauli matrix) can be regarded as the phase flip operator
-    # apply Z gate to the last qubit ((nqubits-1)-th qubit)
+    # & apply Z gate to the last qubit ((nqubits-1)-th qubit)
     # cf. http://docs.qulacs.org/ja/latest/intro/4.1_python_tutorial.html#id13
     CnZ = to_matrix_gate(Z(nqubits - 1))
-    # phase flip only for |11...1> (phase flip for |1> is sign flip)
+    # phase flip only for |11...1> (phase flip for |1> is always sign flip)
     for i in range(nqubits - 1):
         control_index = i
         control_with_value = 1
