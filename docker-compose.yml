@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  quantum:
+  python:
     image: local/pyquantum
     build:
       dockerfile: ./Dockerfile
