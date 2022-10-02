@@ -17,6 +17,7 @@ ENV TZ=Asia/Tokyo
 # ------ #
 
 RUN apt-get install -y python3.8 python-is-python3 python3-pip
+RUN pip install --upgrade pip
 # for matplotlib interface
 RUN apt-get install -y python3-tk tk-dev
 
