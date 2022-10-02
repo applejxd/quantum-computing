@@ -1,8 +1,8 @@
 # use Python 3.8
-qiskit
-cuquantum
-cuquantum-python
+numpy
 cupy-cuda112
 matplotlib
 qulacs
-numpy
+qiskit
+cuquantum
+cuquantum-python

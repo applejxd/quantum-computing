@@ -1,5 +1,5 @@
 # cf. https://dojo.qulacs.org/ja/latest/notebooks/8.2_Grovers_algorithm.html#%E5%AE%9F%E8%A3%85%E4%BE%8B
-# cf. http://www.quest.lab.uec.ac.jp/q-school/2010/archive/%E9%87%8F%E5%AD%90%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0.pdf
+# cf. https://tinyurl.com/2q7crb6l
 
 # ライブラリのインポート
 import matplotlib
@@ -28,7 +28,7 @@ def show_distribution(state, nqubits):
 def make_Hadamard(nqubits):
     """
     Hadamard's transformation for generating uniform state vector
-    cf. https://dojo.qulacs.org/ja/latest/notebooks/3.1_Qulacs_tutorial.html?highlight=add_gate#%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF%E3%81%AE%E6%A7%8B%E6%88%90
+    cf. https://tinyurl.com/2hyrjdzf
 
     :param nqubits:
     :return:
@@ -110,8 +110,8 @@ def main1():
     nqubits = 5
 
     # 初期状態の準備
-    # cf. https://dojo.qulacs.org/ja/latest/notebooks/3.1_Qulacs_tutorial.html?highlight=set_computational_basis#%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%81%AE%E5%88%9D%E6%9C%9F%E5%8C%96
-    state = QuantumState(nqubits)
+    # cf. https://tinyurl.com/2mym3hgt
+    state: QuantumState = QuantumState(nqubits)
     state.set_zero_state()
     Hadamard = make_Hadamard(nqubits)
     Hadamard.update_quantum_state(state)
@@ -120,7 +120,7 @@ def main1():
     show_distribution(state, nqubits)
 
     # check phase flip w.r.t. answer
-    hoge = state.copy()
+    hoge: QuantumState = state.copy()
     U_w = make_U_w(nqubits)
     U_w.update_quantum_state(hoge)
     print(hoge.get_vector())
@@ -147,7 +147,7 @@ def main1():
         U_w.update_quantum_state(state)
         U_s.update_quantum_state(state)
         show_distribution(state, nqubits)
-        print(np.linalg.norm(inner_product(state, target_state)))
+        print(abs(inner_product(state, target_state)))
 
 
 def main2():
@@ -174,7 +174,7 @@ def main2():
         U_w.update_quantum_state(state)
         U_s.update_quantum_state(state)
         # show_distribution(state,nqubits)
-        result.append(np.linalg.norm(inner_product(state, target_state)))
+        result.append(abs(inner_product(state, target_state)))
 
     max_k = np.argmax(result)
     print(f"maximal probability {result[max_k]:5e} is obtained at k = {max_k + 1}")
@@ -185,6 +185,7 @@ def main2():
 
 def main3():
     result = []
+    result_array = np.empty()
     min_nqubits = 6
     max_nqubits = 16
     for nqubits in range(min_nqubits, max_nqubits + 1, 2):
@@ -206,11 +207,12 @@ def main3():
         tmp = 0
         flag = 0
         num_iter = 0
+        suc_prob = 0
         while flag == 0 and num_iter <= 1000:
             num_iter += 1
             U_w.update_quantum_state(state)
             U_s.update_quantum_state(state)
-            suc_prob = np.linalg.norm(inner_product(state, target_state))
+            suc_prob = abs(inner_product(state, target_state))
             if tmp < suc_prob:
                 tmp = suc_prob
             else:
