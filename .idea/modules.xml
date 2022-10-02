@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/qunatum.iml" filepath="$PROJECT_DIR$/.idea/qunatum.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/qunatum-computing.iml" filepath="$PROJECT_DIR$/.idea/qunatum-computing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/quantum-computing.iml" filepath="$PROJECT_DIR$/.idea/quantum-computing.iml" />
     </modules>
   </component>
 </project>
